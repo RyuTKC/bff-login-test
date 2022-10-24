@@ -1,0 +1,26 @@
+version: '3.4'
+
+x-permission: &permission
+  user: UID_GID
+
+
+services:
+  db-for-laravel:
+    container_name: postgres-laravel
+    image: postgres
+    <<: *permission
+    ports:
+      - 8002:8080
+  db-for-rails:
+    container_name: postgres-rails
+    image: postgres
+    <<: *permission
+    ports:
+      - 8003:8080
+    # entrypoint: [] or file.sh
+    # command: []
+    # volumes:
+    #   - ./hostPath:/containerPath
+
+# volumes:
+# network:
